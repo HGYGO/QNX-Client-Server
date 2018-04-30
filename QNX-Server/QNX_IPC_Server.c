@@ -1,17 +1,17 @@
 /*
 ========================================================================================
 * File Name:	QNX_IPC_Server.c
-* Compiler:		QNX QCC
-* Author:		Fleming Patel
-* Course:		Real-Time Programming
+* Compiler:	QNX QCC
+* Author:	Fleming Patel
+* Course:	Real-Time Programming
 * Assignment:	06
-* Date:			Friday April 20, 2018
+* Date:		Friday April 20, 2018
 * Professor:	RICHARD HAGEMEYER, MOHAMMAD PATOARY
-* Purpose:		This file is create a channel which owned by the process.
-* 				The fils is also resonsible for registering client's up to maximim
-* 				limit three.
-* 				The new feature implemented which trackes the client activness,
-* 				and depending on that server deregisters client.
+* Purpose:	This file is create a channel which owned by the process.
+* 		The fils is also resonsible for registering client's up to maximim
+* 		limit three.
+* 		The new feature implemented which trackes the client activness,
+* 		and depending on that server deregisters client.
 ========================================================================================
 */
 
@@ -51,11 +51,11 @@ void error(char *msg) {
 }
 
 /***************************************************************************************
-* Purpose:			create a channel which owned by the process, getting message
-* 					from client and replying back to client
-* Author:			Fleming Patel
+* Purpose:		Create a channel which owned by the process, getting message
+* 			from client and replying back to client
+* Author:		Fleming Patel
 * Called Function:	ChannelCreate(), MsgReceive(), initializingReply(),
-* 					MsgReply()
+* 			MsgReply()
 * Parameters:		int argc, char *argv[]
 * Return Value:		return 0 Exit success
 ***************************************************************************************/
@@ -193,12 +193,12 @@ int main(int argc, char *argv[]) {
 }
 
 /***************************************************************************************
-* Purpose:			The purpose of this function is checking the empty space in table.
-* 					I created this function as a future consideration, right now the
-* 					table does not have functionality for dynamic allocation.
-* 					If the table is full then the client should receive the message of
-* 					table is full.
-* Author:			Fleming Patel
+* Purpose:		The purpose of this function is checking the empty space in table.
+* 			I created this function as a future consideration, right now the
+* 			table does not have functionality for dynamic allocation.
+* 			If the table is full then the client should receive the message of
+* 			table is full.
+* Author:		Fleming Patel
 * Called Function:	sizeof()
 * Parameters:		None
 * Return Value:		TRUE For success and FALSE for failure
@@ -214,9 +214,9 @@ int isTableEmpty(){
 }
 
 /***************************************************************************************
-* Purpose:			This method returns client's index in the table. If client entry is
-* 					not in table then it return ERROR_CODE.
-* Author:			Fleming Patel
+* Purpose:		This method returns client's index in the table. If client entry is
+* 			not in table then it return ERROR_CODE.
+* Author:		Fleming Patel
 * Called Function:	sizeof()
 * Parameters:		int clientPid
 * Return Value:		returns Client's index or ERROR_CODE, if client's entry is not found
@@ -232,8 +232,8 @@ int getClientIndexInTable(int clientPid){
 }
 
 /***************************************************************************************
-* Purpose:			This method return client registration status
-* Author:			Fleming Patel
+* Purpose:		This method return client registration status
+* Author:		Fleming Patel
 * Called Function:	None
 * Parameters:		int index
 * Return Value:		returns REGISTER 11 or DEREGISTER 22
@@ -243,9 +243,9 @@ int isRegister(int index){
 }
 
 /***************************************************************************************
-* Purpose:			This method returns client pid depending on client's index
-* 					in the table.
-* Author:			Fleming Patel
+* Purpose:		This method returns client pid depending on client's index
+* 			in the table.
+* Author:		Fleming Patel
 * Called Function:	None
 * Parameters:		int index
 * Return Value:		returns client's pid
@@ -255,14 +255,14 @@ int getClientPid(int index){
 }
 
 /***************************************************************************************
-* Purpose:			The purpose of this method is creating a specific event and timer
-* 					for speicific client.
-* 						-	The timer is set for 15 seconds.
-*						-	The timer id is storing in the pTimers Table
-*							according to client index.
-* Author:			Fleming Patel
+* Purpose:		The purpose of this method is creating a specific event and timer
+* 			for speicific client.
+* 				-	The timer is set for 15 seconds.
+*				-	The timer id is storing in the pTimers Table
+*					according to client index.
+* Author:		Fleming Patel
 * Called Function:	ConnectAttach(), getClientIndexInTable(), timer_create(),
-* 					timer_settime()
+* 			timer_settime()
 * Parameters:		None
 * Return Value:		TRUE For success and FALSE for failure
 ***************************************************************************************/
@@ -278,9 +278,9 @@ void startTimer(int channelId,ClientMessage *msg,struct sigevent event,struct it
 }
 
 /***************************************************************************************
-* Purpose:			The purpose of this method is deleting specific timer for sepcifc
-* 					client's pid
-* Author:			Fleming Patel
+* Purpose:		The purpose of this method is deleting specific timer for sepcifc
+* 			client's pid
+* Author:		Fleming Patel
 * Called Function:	getClientIndexInTable(),timer_delete()
 * Parameters:		ClientMessage *msg
 * Return Value:		TRUE For success and FALSE for failure
@@ -291,27 +291,27 @@ void deleteTimer(ClientMessage *msg){
 }
 
 /***************************************************************************************
-* Purpose:			Initializing what option client select with the help of flag.
-* 					Flag 0: Adds the client pid int the table and by default it assigns
-* 							that client is not register.
-* 					Flag 1:	If semaphores is not zero than register's the client. If
-* 							client is already registered than send appropriate message
-* 							to client.
-* 					Flag 2: Deregistering client and incrementing semaphores so another
-* 							client can be register.
-* 					Flag 3:	Sends the client message back, stating that server found
-* 							message.
-* 					Flag 4: Client used digit value for query, returns the specific
-* 							character on that digit value index in it's valid.
-* 					Flag 5: Client used character value for query, returns the total
-* 							occurrences of that character which send by client.
-* 					Flag 6:	When client close the connection without deregistering then
-* 							this part deregistered client and increment semaphores and
-* 							also removes client's entry from table so another client
-* 							can be add and connect.
-* Author:			Fleming Patel
+* Purpose:		Initializing what option client select with the help of flag.
+* 				Flag 0: Adds the client pid int the table and by default it assigns
+* 					that client is not register.
+* 				Flag 1:	If semaphores is not zero than register's the client. If
+* 					client is already registered than send appropriate message
+* 					to client.
+* 				Flag 2: Deregistering client and incrementing semaphores so another
+* 					client can be register.
+* 				Flag 3:	Sends the client message back, stating that server found
+* 					message.
+* 				Flag 4: Client used digit value for query, returns the specific
+* 					character on that digit value index in it's valid.
+* 				Flag 5: Client used character value for query, returns the total
+* 					occurrences of that character which send by client.
+* 				Flag 6:	When client close the connection without deregistering then
+* 					this part deregistered client and increment semaphores and
+* 					also removes client's entry from table so another client
+* 					can be add and connect.
+* Author:		Fleming Patel
 * Called Function:	strlen(), strcpy(), malloc(), free(), strcat(), sizeof(),
-* 					MsgReply()
+* 			MsgReply()
 * Parameters:		ClientMessage *msg, ServerMessage *reply, FILE *fp,int clientIndex
 * Return Value:		None
 ***************************************************************************************/
