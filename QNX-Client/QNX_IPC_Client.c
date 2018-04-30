@@ -2,14 +2,14 @@
  ========================================================================================
  * File Name:	QNX_IPC_Client.c
  * Compiler:	QNX QCC
- * Author:		Fleming Patel
- * Course:		Real-Time Programming
+ * Author:	Fleming Patel
+ * Course:	Real-Time Programming
  * Assignment:	06
- * Date:		Friday April 20, 2018
+ * Date:	Friday April 20, 2018
  * Professor:	RICHARD HAGEMEYER, MOHAMMAD PATOARY
- * Purpose:		establish a connection between the calling process and the channel
- * 				This file responsible for making request for registering client and
- * 				deregister client.
+ * Purpose:	Establish a connection between the calling process and the channel
+ * 		This file responsible for making request for registering client and
+ * 		deregister client.
  ========================================================================================
  */
 
@@ -49,23 +49,23 @@ void error(char *msg) {
 
 /***************************************************************************************
 * Purpose:			Establish a connection between the calling process and the
-* 					channel specified by chid owned by the process specified by pid on
-* 					the node specified by nd.
-*					This Function is also responsible for getting client's selection and
-*					assigning flag on that specific selection which server can
-*					understand. for e.g.,
-*						Flag 0:	Stands for sending client pid to server and adding that
-*								in to table
-*						Flag 1:	Registering Client
-*						Flag 2:	Deregistering Client
-*						Flag 3:	Sending message to server and doing some query on
-*								the message
-*						Flag 4: If client send digit in a query
-*						Flag 5:	If client send character in a query
-*						Flag 6:	Terminating client program
-* Author:			Fleming Patel
+* 				channel specified by chid owned by the process specified by pid on
+* 				the node specified by nd.
+*				This Function is also responsible for getting client's selection and
+*				assigning flag on that specific selection which server can
+*				understand. for e.g.,
+*					Flag 0:	Stands for sending client pid to server and adding that
+*						in to table
+*					Flag 1:	Registering Client
+*					Flag 2:	Deregistering Client
+*					Flag 3:	Sending message to server and doing some query on
+*						the message
+*					Flag 4: If client send digit in a query
+*					Flag 5:	If client send character in a query
+*					Flag 6:	Terminating client program
+* Author:		Fleming Patel
 * Called Function:	ConnectAttach(), atoi(), menu(), fflush(), fgets(), doIPC(),
-* 					secondMenu(), checkType(), resetOptionFlag(), ConnectDetach()
+* 			secondMenu(), checkType(), resetOptionFlag(), ConnectDetach()
 * Parameters:		int argc, char *argv[]
 * Return Value:		return 0 Exit success
 ***************************************************************************************/
@@ -159,8 +159,8 @@ int main(int argc, char *argv[]) {
 }
 
 /***************************************************************************************
-* Purpose:			Printing First default Selection
-* Author:			Fleming Patel
+* Purpose:		Printing First default Selection
+* Author:		Fleming Patel
 * Called Function:	printf()
 * Parameters:		None
 * Return Value:		None
@@ -170,8 +170,8 @@ void menu(){
 }
 
 /***************************************************************************************
-* Purpose:			Printing Second menu Selection
-* Author:			Fleming Patel
+* Purpose:		Printing Second menu Selection
+* Author:		Fleming Patel
 * Called Function:	printf()
 * Parameters:		None
 * Return Value:		None
@@ -182,24 +182,24 @@ void secondMenu(){
 
 /***************************************************************************************
 * Purpose:			This function is responsible for validating user input and
-* 					assigning optionFlag.
-* 					(1) Check if user put single character value or more than two
-* 						character.
-* 					(2) If user input value is only one character then:-
-* 					 	 -	If user input start from the character then algorithm takes
-* 							character as a default argument and pass that
-* 							character to server
-* 						 -	If user input start from digit value then it will pass to
-* 						 	server as index number
-* 					(3) If user input value is more than two character:-
-* 						 -	If it's a character then algorithm takes first character as
-* 						 	a default argument and pass that to server
-* 						 -	If it's digit then algorithm check all input is digit or not.
-* 						 	If all input is digit then it will pass to server as
-* 						 	index number. If input contains any character that is
-* 						 	not digit then it will give an error message to user and let
-* 						 	them input again
-* Author:			Fleming Patel
+* 				assigning optionFlag.
+* 				(1) Check if user put single character value or more than two
+* 				    character.
+* 				(2) If user input value is only one character then:-
+* 				 	 -	If user input start from the character then algorithm takes
+* 						character as a default argument and pass that
+* 						character to server
+* 					 -	If user input start from digit value then it will pass to
+* 					 	server as index number
+* 				(3) If user input value is more than two character:-
+* 					 -	If it's a character then algorithm takes first character as
+* 						a default argument and pass that to server
+* 					 -	If it's digit then algorithm check all input is digit or not.
+* 						 If all input is digit then it will pass to server as
+* 						 index number. If input contains any character that is
+* 						 not digit then it will give an error message to user and let
+* 						 them input again
+* Author:		Fleming Patel
 * Called Function:	strlen(), isdigit(), isalpha(), atoi()
 * Parameters:		ClientMessage *msg, ServerMessage *reply
 * Return Value:		None
@@ -252,8 +252,8 @@ void checkType(char *input,ClientMessage *msg){
 }
 
 /***************************************************************************************
-* Purpose:			sending message to server and getting message from server
-* Author:			Fleming Patel
+* Purpose:		Sending message to server and getting message from server
+* Author:		Fleming Patel
 * Called Function:	MsgSend()
 * Parameters:		ClientMessage *msg, ServerMessage *reply
 * Return Value:		None
@@ -281,8 +281,8 @@ void doIPC(int connectionId,ClientMessage msg,ServerMessage reply){
 }
 
 /***************************************************************************************
-* Purpose:			Reseting client previous selected option to 0
-* Author:			Fleming Patel
+* Purpose:		Reseting client previous selected option to 0
+* Author:		Fleming Patel
 * Called Function:	None
 * Parameters:		ClientMessage *msg
 * Return Value:		None
