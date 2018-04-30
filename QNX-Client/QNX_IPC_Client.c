@@ -48,21 +48,21 @@ void error(char *msg) {
 }
 
 /***************************************************************************************
-* Purpose:			Establish a connection between the calling process and the
-* 				channel specified by chid owned by the process specified by pid on
-* 				the node specified by nd.
-*				This Function is also responsible for getting client's selection and
-*				assigning flag on that specific selection which server can
-*				understand. for e.g.,
-*					Flag 0:	Stands for sending client pid to server and adding that
-*						in to table
-*					Flag 1:	Registering Client
-*					Flag 2:	Deregistering Client
-*					Flag 3:	Sending message to server and doing some query on
-*						the message
-*					Flag 4: If client send digit in a query
-*					Flag 5:	If client send character in a query
-*					Flag 6:	Terminating client program
+* Purpose:		Establish a connection between the calling process and the
+* 			channel specified by chid owned by the process specified by pid on
+* 			the node specified by nd.
+*			This Function is also responsible for getting client's selection and
+*			assigning flag on that specific selection which server can
+*			understand. for e.g.,
+*				Flag 0:	Stands for sending client pid to server and adding that
+*					in to table
+*				Flag 1:	Registering Client
+*				Flag 2:	Deregistering Client
+*				Flag 3:	Sending message to server and doing some query on
+*					the message
+*				Flag 4: If client send digit in a query
+*				Flag 5:	If client send character in a query
+*				Flag 6:	Terminating client program
 * Author:		Fleming Patel
 * Called Function:	ConnectAttach(), atoi(), menu(), fflush(), fgets(), doIPC(),
 * 			secondMenu(), checkType(), resetOptionFlag(), ConnectDetach()
@@ -181,24 +181,24 @@ void secondMenu(){
 }
 
 /***************************************************************************************
-* Purpose:			This function is responsible for validating user input and
-* 				assigning optionFlag.
-* 				(1) Check if user put single character value or more than two
-* 				    character.
-* 				(2) If user input value is only one character then:-
-* 				 	 -	If user input start from the character then algorithm takes
-* 						character as a default argument and pass that
-* 						character to server
-* 					 -	If user input start from digit value then it will pass to
-* 					 	server as index number
-* 				(3) If user input value is more than two character:-
-* 					 -	If it's a character then algorithm takes first character as
-* 						a default argument and pass that to server
-* 					 -	If it's digit then algorithm check all input is digit or not.
-* 						 If all input is digit then it will pass to server as
-* 						 index number. If input contains any character that is
-* 						 not digit then it will give an error message to user and let
-* 						 them input again
+* Purpose:		This function is responsible for validating user input and
+* 			assigning optionFlag.
+* 			(1) Check if user put single character value or more than two
+* 			    character.
+* 			(2) If user input value is only one character then:-
+* 			 	 -	If user input start from the character then algorithm takes
+* 					character as a default argument and pass that
+* 					character to server
+* 				 -	If user input start from digit value then it will pass to
+*				 	server as index number
+* 			(3) If user input value is more than two character:-
+* 				 -	If it's a character then algorithm takes first character as
+* 					a default argument and pass that to server
+* 				 -	If it's digit then algorithm check all input is digit or not.
+* 					If all input is digit then it will pass to server as
+* 					index number. If input contains any character that is
+* 					not digit then it will give an error message to user and let
+* 					them input again
 * Author:		Fleming Patel
 * Called Function:	strlen(), isdigit(), isalpha(), atoi()
 * Parameters:		ClientMessage *msg, ServerMessage *reply
